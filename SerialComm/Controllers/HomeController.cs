@@ -162,12 +162,20 @@ namespace SerialComm.Controllers
             _serialPort = new SerialPort();
 
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = SetPortName(_serialPort.PortName);   // /dev/ttyS0
-            _serialPort.BaudRate = SetPortBaudRate(_serialPort.BaudRate);   // 115200
-            _serialPort.Parity = SetPortParity(_serialPort.Parity);         // None
-            _serialPort.DataBits = SetPortDataBits(_serialPort.DataBits);   // 8
-            _serialPort.StopBits = SetPortStopBits(_serialPort.StopBits);   // One
-            _serialPort.Handshake = SetPortHandshake(_serialPort.Handshake);    // None
+            //_serialPort.PortName = SetPortName(_serialPort.PortName);   // /dev/ttyS0
+            //_serialPort.BaudRate = SetPortBaudRate(_serialPort.BaudRate);   // 115200
+            //_serialPort.Parity = SetPortParity(_serialPort.Parity);         // None
+            //_serialPort.DataBits = SetPortDataBits(_serialPort.DataBits);   // 8
+            //_serialPort.StopBits = SetPortStopBits(_serialPort.StopBits);   // One
+            //_serialPort.Handshake = SetPortHandshake(_serialPort.Handshake);    // None
+
+            // Setting
+            _serialPort.PortName = "/dev/ttyS0";   // /dev/ttyS0
+            _serialPort.BaudRate = 115200;   // 115200
+            _serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), "None");         // None
+            _serialPort.DataBits = 8;   // 8
+            _serialPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), "One");   // One
+            _serialPort.Handshake = (Handshake)Enum.Parse(typeof(Handshake), "None");    // None
 
             // Set the read/write timeouts  
             _serialPort.ReadTimeout = 500;
@@ -177,8 +185,8 @@ namespace SerialComm.Controllers
             _continue = true;
             readThread.Start();
 
-            Console.Write("Name: ");
-            name = Console.ReadLine();
+            //Console.Write("Name: ");
+            //name = Console.ReadLine();
 
             Console.WriteLine("Type QUIT to exit");
 
@@ -192,7 +200,8 @@ namespace SerialComm.Controllers
                 }
                 else
                 {
-                    _serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
+                    //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
+                    _serialPort.WriteLine(String.Format(message));
                 }
             }
 
