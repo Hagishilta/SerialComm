@@ -28,7 +28,7 @@ namespace SerialComm.Controllers
             {
                 try
                 {
-                    Console.WriteLine("reading...");
+                    //Console.WriteLine("reading...");
                     string message = _serialPort.ReadLine();
                     Console.WriteLine(message);
                     //Console.WriteLine("reading...");
@@ -162,12 +162,12 @@ namespace SerialComm.Controllers
             _serialPort = new SerialPort();
 
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = SetPortName(_serialPort.PortName);
-            _serialPort.BaudRate = SetPortBaudRate(_serialPort.BaudRate);
-            _serialPort.Parity = SetPortParity(_serialPort.Parity);
-            _serialPort.DataBits = SetPortDataBits(_serialPort.DataBits);
-            _serialPort.StopBits = SetPortStopBits(_serialPort.StopBits);
-            _serialPort.Handshake = SetPortHandshake(_serialPort.Handshake);
+            _serialPort.PortName = SetPortName(_serialPort.PortName);   // /dev/ttyS0
+            _serialPort.BaudRate = SetPortBaudRate(_serialPort.BaudRate);   // 115200
+            _serialPort.Parity = SetPortParity(_serialPort.Parity);         // None
+            _serialPort.DataBits = SetPortDataBits(_serialPort.DataBits);   // 8
+            _serialPort.StopBits = SetPortStopBits(_serialPort.StopBits);   // One
+            _serialPort.Handshake = SetPortHandshake(_serialPort.Handshake);    // None
 
             // Set the read/write timeouts  
             _serialPort.ReadTimeout = 500;
@@ -192,8 +192,7 @@ namespace SerialComm.Controllers
                 }
                 else
                 {
-                    _serialPort.WriteLine(
-                        String.Format("<{0}>: {1}", name, message));
+                    _serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
                 }
             }
 
