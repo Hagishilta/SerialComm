@@ -28,8 +28,10 @@ namespace SerialComm.Controllers
             {
                 try
                 {
+                    Console.WriteLine("reading...");
                     string message = _serialPort.ReadLine();
                     Console.WriteLine(message);
+                    //Console.WriteLine("reading...");
                 }
                 catch (TimeoutException) { }
             }
