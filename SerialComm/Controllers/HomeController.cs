@@ -30,7 +30,7 @@ namespace SerialComm.Controllers
                 {
                     //Console.WriteLine("reading...");
                     string message = _serialPort.ReadLine();
-                    Console.WriteLine(message);
+                    Console.WriteLine($"read message : {message}");
                     //Console.WriteLine("reading...");
                 }
                 catch (TimeoutException) { }
