@@ -192,21 +192,22 @@ namespace SerialComm.Controllers
 
             while (_continue)
             {
-                //message = Console.ReadLine();
+                message = Console.ReadLine();
 
-                //if (stringComparer.Equals("quit", message))
-                //{
-                //    _continue = false;
-                //}
-                //else
-                //{
-                //    //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
-                //    _serialPort.WriteLine(String.Format(message));
-                //}
-                _serialPort.WriteLine(String.Format("2"));
-                Thread.Sleep(10);
-                _serialPort.WriteLine(String.Format("q"));
-                Thread.Sleep(10);
+                if (stringComparer.Equals("quit", message))
+                {
+                    _continue = false;
+                }
+                else
+                {
+                    //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
+                    _serialPort.WriteLine(String.Format(message));
+                }
+                // TEST
+                //_serialPort.WriteLine(String.Format("2"));
+                //Thread.Sleep(10);
+                //_serialPort.WriteLine(String.Format("q"));
+                //Thread.Sleep(10);
             }
 
             readThread.Join();
