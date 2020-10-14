@@ -30,7 +30,9 @@ namespace SerialComm.Controllers
                 {
                     //Console.WriteLine("reading...");
                     string message = _serialPort.ReadLine();
-                    Console.WriteLine($"read message : {message}");
+                    string moduleState = message.Split('/')[0];
+                    string moduleAmount = message.Split('/')[1];
+                    Console.WriteLine($"read message - {message} : state - {moduleState} / amount - {moduleAmount}");
                     //Console.WriteLine("reading...");
                 }
                 catch (TimeoutException) { }
