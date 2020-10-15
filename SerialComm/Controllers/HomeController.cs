@@ -192,9 +192,18 @@ namespace SerialComm.Controllers
 
             Console.WriteLine("Type QUIT to exit");
 
+            int i = 0;
+            int[] amounts = { 111, 222, 333, 444, 555 };
+            string command;
+            int amount; 
+            string unit;
             while (_continue)
             {
                 message = Console.ReadLine();
+                //message = "P/111/ml";
+                command = "P";
+                amount = amounts[i];
+                unit = "ml";
 
                 if (stringComparer.Equals("quit", message))
                 {
@@ -203,7 +212,15 @@ namespace SerialComm.Controllers
                 else
                 {
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
-                    _serialPort.WriteLine(String.Format(message));
+                    _serialPort.WriteLine(String.Format("{0}/{1}/{2}", command, amount, unit));
+                }
+                if (i < amounts.Length-1)
+                {
+                    ++i;
+                }
+                else
+                {
+                    i = 0;
                 }
                 // TEST
                 //_serialPort.WriteLine(String.Format("2"));
