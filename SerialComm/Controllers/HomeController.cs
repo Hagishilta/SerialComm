@@ -212,7 +212,9 @@ namespace SerialComm.Controllers
                 else
                 {
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
-                    _serialPort.WriteLine(String.Format("{0}/{1}/{2}", command, amount, unit));
+                    string output = String.Format("{0}/{1}/{2}", command, amount, unit);
+                    Console.WriteLine(output);
+                    _serialPort.WriteLine(output);
                 }
                 if (i < amounts.Length-1)
                 {
