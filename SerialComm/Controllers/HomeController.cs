@@ -194,6 +194,7 @@ namespace SerialComm.Controllers
 
             int i = 0;
             int[] amounts = { 111, 222, 333, 444, 555 };
+            string[] commands = { "P", "O" };
             string command;
             int amount; 
             string unit;
@@ -201,23 +202,20 @@ namespace SerialComm.Controllers
             {
                 message = Console.ReadLine();
                 //message = "P/111/ml";
-                command = "P";
+                command = commands[i % 2];
                 amount = amounts[i];
                 unit = "ml";
-                Console.WriteLine(1);
                 if (stringComparer.Equals("quit", message))
                 {
                     _continue = false;
                 }
                 else
                 {
-                    Console.WriteLine(2);
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
-                    string output = String.Format("{0}/{1}/{2}", command, amount, unit);
-                    Console.WriteLine(output);
-                    _serialPort.WriteLine(output);
                 }
-                Console.WriteLine(3);
+                string output = String.Format("{0}/{1}/{2}", command, amount, unit);
+                //Console.WriteLine(output);
+                _serialPort.WriteLine(output);
                 if (i < amounts.Length-1)
                 {
                     ++i;
@@ -226,7 +224,6 @@ namespace SerialComm.Controllers
                 {
                     i = 0;
                 }
-                Console.WriteLine("i :", i);
                 // TEST
                 //_serialPort.WriteLine(String.Format("2"));
                 //Thread.Sleep(10);
