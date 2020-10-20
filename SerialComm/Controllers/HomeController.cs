@@ -193,7 +193,7 @@ namespace SerialComm.Controllers
             Console.WriteLine("Type QUIT to exit");
 
             int i = 0;
-            int[] amounts = { 111, 222, 333, 444, 555 };
+            int[] amounts = { 010, 055, 111, 166, 222 };
             int[] commands = { 0, 1 };  // 0 preoutput 1 output
             int command;
             int amount; 
