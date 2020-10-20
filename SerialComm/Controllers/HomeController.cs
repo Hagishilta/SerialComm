@@ -216,7 +216,7 @@ namespace SerialComm.Controllers
                 {
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
                 }
-                string output = String.Format("{0}/{1}/{2}", command, amount.ToString("D2"), unit);
+                string output = String.Format("{0}/{1}/{2}", command, amount.ToString("D3"), unit);
                 Console.WriteLine($"Write to STM: {output}");
                 _serialPort.WriteLine(output);
                 if (i < amounts.Length-1)
