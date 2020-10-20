@@ -35,7 +35,10 @@ namespace SerialComm.Controllers
                     Console.WriteLine($"read message - {message} : state - {moduleState} / amount - {moduleAmount}");
                     //Console.WriteLine("reading...");
                 }
-                catch (TimeoutException) { }
+                catch (Exception) 
+                {
+                    // do nothing.
+                }
             }
         }
 
