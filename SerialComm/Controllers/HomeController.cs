@@ -194,7 +194,8 @@ namespace SerialComm.Controllers
 
             int i = 0;
             int[] amounts = { 010, 055, 111, 166, 222 };
-            int[] commands = { 0, 1 };  // 0 preoutput 1 output
+            //int[] commands = { 0, 1 };  // 0 preoutput 1 output
+            int[] commands = { 0 };  // 0 output
             int command;
             int amount; 
             string unit;
@@ -202,7 +203,8 @@ namespace SerialComm.Controllers
             {
                 message = Console.ReadLine();
                 //message = "P/111/ml";
-                command = commands[i % 2];
+                //command = commands[i % 2];
+                command = commands[0];
                 amount = amounts[i];
                 unit = "ml";
                 if (stringComparer.Equals("quit", message))
@@ -214,7 +216,7 @@ namespace SerialComm.Controllers
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
                 }
                 string output = String.Format("{0}/{1}/{2}", command, amount, unit);
-                //Console.WriteLine(output);
+                //Console.WriteLine($"Write to STM: {output}");
                 _serialPort.WriteLine(output);
                 if (i < amounts.Length-1)
                 {
