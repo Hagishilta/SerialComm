@@ -194,8 +194,8 @@ namespace SerialComm.Controllers
 
             int i = 0;
             int[] amounts = { 111, 222, 333, 444, 555 };
-            string[] commands = { "P", "O" };
-            string command;
+            int[] commands = { 0, 1 };  // 0 preoutput 1 output
+            int command;
             int amount; 
             string unit;
             while (_continue)
