@@ -193,7 +193,8 @@ namespace SerialComm.Controllers
             Console.WriteLine("Type QUIT to exit");
 
             int i = 0;
-            int[] amounts = { 010, 055, 111, 166, 222 };
+            //int[] amounts = { 010, 055, 111, 166, 222 };
+            int[] amounts = { 010, 055 };
             //int[] commands = { 0, 1 };  // 0 preoutput 1 output
             int[] commands = { 0 };  // 0 output
             int command;
@@ -216,7 +217,7 @@ namespace SerialComm.Controllers
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
                 }
                 string output = String.Format("{0}/{1}/{2}", command, amount, unit);
-                //Console.WriteLine($"Write to STM: {output}");
+                Console.WriteLine($"Write to STM: {output}");
                 _serialPort.WriteLine(output);
                 if (i < amounts.Length-1)
                 {
