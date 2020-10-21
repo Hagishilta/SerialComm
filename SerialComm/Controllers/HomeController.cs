@@ -196,21 +196,23 @@ namespace SerialComm.Controllers
             Console.WriteLine("Type QUIT to exit");
 
             int i = 0;
-            //int[] amounts = { 010, 055, 111, 166, 222 };
-            double[] amounts = { 010.0, 055.0 };
-            //int[] commands = { 0, 1 };  // 0 preoutput 1 output
-            int[] commands = { 0 };  // 0 output
+            int j = 0;
+            int[] commands = { 0, 1 };  // 0 preoutput 1 output
+            //int[] commands = { 0 };  // ROTARY : 0 output
+            double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };
+            //double[] amounts = { 010.0, 055.0 };    // ROTARY             
             int command;
-            double amount; 
+            double amount;
             string unit;
             while (_continue)
             {
                 message = Console.ReadLine();
                 //message = "P/111/ml";
-                //command = commands[i % 2];
-                command = commands[0];
-                amount = amounts[i];
-                unit = "ml";
+                command = commands[i % 2];    // SCREW, SAUCE
+                //command = commands[0];  // ROTARY
+                amount = amounts[j];
+                unit = "ml";    // SAUCE
+                //unit = 'g'; // ROTARY, SCREW
                 if (stringComparer.Equals("quit", message))
                 {
                     _continue = false;
@@ -222,7 +224,20 @@ namespace SerialComm.Controllers
                 string output = String.Format("{0}/{1}/{2}", command, ((int)amount).ToString("D3") + ((amount * 10) % 10).ToString(), unit);
                 Console.WriteLine($"Write to STM: {output}");
                 _serialPort.WriteLine(output);
-                if (i < amounts.Length-1)
+
+                if (i == 1)
+                {
+                    if (j < amounts.Length - 1)
+                    {
+                        ++j;
+                    }
+                    else
+                    {
+                        j = 0;
+                    }                    
+                }
+
+                if (i < commands.Length - 1)
                 {
                     ++i;
                 }
@@ -230,6 +245,7 @@ namespace SerialComm.Controllers
                 {
                     i = 0;
                 }
+                
                 // TEST
                 //_serialPort.WriteLine(String.Format("2"));
                 //Thread.Sleep(10);
