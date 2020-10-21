@@ -209,7 +209,7 @@ namespace SerialComm.Controllers
             {
                 message = Console.ReadLine();
                 //message = "P/111/ml";
-                command = commands[i % 2];    // SCREW, SAUCE
+                command = commands[i];    // SCREW, SAUCE
                 //command = commands[0];  // ROTARY
                 amount = amounts[j];
                 //unit = "ml";    // SAUCE
