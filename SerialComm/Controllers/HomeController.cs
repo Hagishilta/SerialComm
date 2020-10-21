@@ -200,7 +200,7 @@ namespace SerialComm.Controllers
             int[] commands = { 0, 1 };  // 0 preoutput 1 output
             //int[] commands = { 0 };  // ROTARY : 0 output
             //double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };   // SAUCE
-            double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };   // SCREW
+            double[] amounts = { 000.0, 037.5, 056.3, 075.0, 090.0, 112.5 };   // SCREW
             //double[] amounts = { 010.0, 055.0 };    // ROTARY             
             int command;
             double amount;
