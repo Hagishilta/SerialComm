@@ -199,7 +199,8 @@ namespace SerialComm.Controllers
             int j = 0;
             int[] commands = { 0, 1 };  // 0 preoutput 1 output
             //int[] commands = { 0 };  // ROTARY : 0 output
-            double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };
+            //double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };   // SAUCE
+            double[] amounts = { 000.0, 024.0, 036.0, 048.0, 057.6 };   // SCREW
             //double[] amounts = { 010.0, 055.0 };    // ROTARY             
             int command;
             double amount;
@@ -211,8 +212,8 @@ namespace SerialComm.Controllers
                 command = commands[i % 2];    // SCREW, SAUCE
                 //command = commands[0];  // ROTARY
                 amount = amounts[j];
-                unit = "ml";    // SAUCE
-                //unit = 'g'; // ROTARY, SCREW
+                //unit = "ml";    // SAUCE
+                unit = "g"; // ROTARY, SCREW
                 if (stringComparer.Equals("quit", message))
                 {
                     _continue = false;
