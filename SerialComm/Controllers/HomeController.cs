@@ -197,11 +197,11 @@ namespace SerialComm.Controllers
 
             int i = 0;
             //int[] amounts = { 010, 055, 111, 166, 222 };
-            int[] amounts = { 010, 055 };
+            double[] amounts = { 010.0, 055.0 };
             //int[] commands = { 0, 1 };  // 0 preoutput 1 output
             int[] commands = { 0 };  // 0 output
             int command;
-            int amount; 
+            double amount; 
             string unit;
             while (_continue)
             {
@@ -219,7 +219,7 @@ namespace SerialComm.Controllers
                 {
                     //_serialPort.WriteLine(String.Format("<{0}>: {1}", name, message));
                 }
-                string output = String.Format("{0}/{1}/{2}", command, amount.ToString("D3"), unit);
+                string output = String.Format("{0}/{1}/{2}", command, amount.ToString(), unit);
                 Console.WriteLine($"Write to STM: {output}");
                 _serialPort.WriteLine(output);
                 if (i < amounts.Length-1)
