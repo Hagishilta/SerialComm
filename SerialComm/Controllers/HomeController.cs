@@ -212,8 +212,8 @@ namespace SerialComm.Controllers
                 command = commands[i];    // SCREW, SAUCE
                 //command = commands[0];  // ROTARY
                 amount = amounts[j];
-                //unit = "ml";    // SAUCE
-                unit = "g"; // ROTARY, SCREW
+                unit = "ml";    // SAUCE
+                //unit = "g"; // ROTARY, SCREW
                 if (stringComparer.Equals("quit", message))
                 {
                     _continue = false;
