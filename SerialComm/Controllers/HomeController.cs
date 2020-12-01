@@ -32,7 +32,8 @@ namespace SerialComm.Controllers
                     string message = _serialPort.ReadLine();
                     string moduleState = message.Split('/')[0];
                     string moduleAmount = message.Split('/')[1];
-                    Console.WriteLine($"read message - {message} : state - {moduleState} / amount - {moduleAmount}");
+                    string ingredientWeight = message.Split('/')[2];
+                    Console.WriteLine($"read message - {message} : state - {moduleState} / amount - {moduleAmount} / weight - {ingredientWeight}");
                     //Console.WriteLine("reading...");
                 }
                 catch (Exception) 
